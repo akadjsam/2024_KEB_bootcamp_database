@@ -129,3 +129,13 @@ select * from customer;
 
 select * from book;
 UPDATE book SET publisher = (SELECT publisher FROM imported_book WHERE bookid = 21) WHERE bookid = 14;
+
+DELETE FROM book WHERE bookid = 11;
+# DELETE FROM customer; # 외래키로 참조하고 있기 때문에 삭제되지 않음
+----------------------------------------------------------------------- # 4장
+SELECT 	ABS(-78), ABS(+78);
+SELECT	ROUND(4.875, 1);
+
+SELECT custid '고객번호', ROUND(SUM(saleprice)/COUNT(*), -2) '평균금액'
+FROM Orders
+GROUP BY custid;
