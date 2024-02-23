@@ -33,3 +33,23 @@ FROM customer
 WHERE address LIKE '%영국%';
 
 DROP VIEW vw_customer;
+USE MADANG;
+SELECT * FROM BOOK;
+
+#1
+CREATE VIEW highorders (bookid,bookname,name,publisher,saleprice)
+AS SELECT od.bookid, bookname, name, publisher, saleprice
+FROM customer cs, orders od, book bk
+WHERE od.custid = cs.custid AND od.bookid = bk.bookid AND saleprice = 20000;
+
+#2
+SELECT bookname, name FROM highorders;
+
+#3
+CREATE OR REPLACE VIEW highorders (bookid,bookname,name,publisher)
+AS SELECT od.bookid, bookname, name, publisher
+FROM customer cs, orders od, book bk
+WHERE od.custid = cs.custid AND od.bookid = bk.bookid AND saleprice = 20000;
+
+DROP VIEW highorders;
+SELECT * FROM highorders;
